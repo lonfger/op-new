@@ -166,7 +166,7 @@ def register_user():
                                                   proxies=proxies,
                                                   verify=False)
 
-                wait_time = random.uniform(4, 8)
+                wait_time = random.uniform(3, 5)
                 time.sleep(wait_time)
                 if register_response.status_code == 401:
                     logger(f'邮箱 {email} 已存在。尝试登录...')
@@ -198,12 +198,12 @@ def main_menu():
                 logger("没有可用的代理，将不使用代理。", 'warn')
 
             logger('开始分享带宽...')
-            time.sleep(6)
+            time.sleep(3)
             loop = asyncio.get_event_loop()
             loop.run_until_complete(share_bandwidth_for_all_tokens(proxies))
 
             while True:
-                time.sleep(5)
+                time.sleep(3)
                 loop.run_until_complete(share_bandwidth_for_all_tokens(proxies))
 
         elif choice == '2':
